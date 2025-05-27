@@ -22,12 +22,14 @@ protected:
 	double m_TimeFromLastUpdatec = 0;
 	double m_TimeForUpdate = 500;
 	vector<Point> m_Body;
+	Point m_PositionBackup;
 public:
 	Figure(Point position);
 	void update(double dt);
 	void render(PaintDevice& paintDevice);
 	void move_right();
 	void move_left();
+	void boost();
 	const vector<Point>& get_body() const {
 		return m_Body;
 	};
@@ -37,6 +39,8 @@ public:
 	void set_position(Point position) {
 		m_Position = position;
 	}
+	void backup();
+	void restore();
 
 };
 

@@ -28,3 +28,15 @@ void Figure::move_right() {
 void Figure::move_left() {
 	m_Position.x--;
 }
+
+void Figure::boost() {
+	m_TimeForUpdate = 50;
+}
+
+void Figure::backup() {
+	m_PositionBackup = m_Position;
+}
+
+void Figure::restore() {
+	m_Position = m_PositionBackup;
+}

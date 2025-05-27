@@ -47,7 +47,25 @@ bool GameField::has_collision(const Figure& figure) {
 		if (point.x + position.x < 1 ||
 			point.x + position.x > m_Width - 2) return true;
 		if (point.y + position.y > m_Height - 2) return true;
+		if (m_Field[point.y + position.y - 1][point.x + position.x - 1] != 0x0387) return true;
+
 	}
 	return false;
 
 }
+
+void GameField::merge(const Figure& figure) {
+	const auto& blocks = figure.get_body();  // Получаем блоки фигуры
+	const Point& pos = figure.get_position();  // Получаем позицию фигуры
+
+	for (const auto& block : blocks) {
+		size_t x = pos.x + block.x;
+		size_t y = pos.y + block.y;
+
+		// Проверяем, что координаты в пределах поля
+		if (x < m_Width && y < m_Height) {
+			m_Field[y-1][x-1] = 0x25D8;  // Записываем символ фигуры в поле
+		}
+	}
+}
+
