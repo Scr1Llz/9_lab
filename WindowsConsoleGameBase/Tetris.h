@@ -10,9 +10,10 @@ private:
 	const size_t m_Width = 14;
 	const size_t m_Height = 26;
 	Figure* m_Figure;
+	bool m_End = false;
 protected:
 	bool end() const override {
-		return false;
+		return m_End;
 	}
 	void on_button_press(const int button) override;
 	void update(const int dt) override;

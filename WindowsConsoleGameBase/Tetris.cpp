@@ -29,6 +29,7 @@ void Tetris::update(const int dt) {
 		m_GameField.merge(*m_Figure);
 		m_Figure = new IBlock(Point(5, 1));
 	}
+	if (m_GameField.has_collision(*m_Figure)) m_End = true;
 }
 
 void Tetris::render(PaintDevice& paintDevice) {
