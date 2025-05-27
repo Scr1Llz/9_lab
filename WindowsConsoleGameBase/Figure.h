@@ -21,8 +21,10 @@ protected:
 	Point m_Position;
 	double m_TimeFromLastUpdatec = 0;
 	double m_TimeForUpdate = 500;
-	vector<Point> m_Body;
+	vector<vector<Point>> m_Body;
+	size_t m_CurrentRotate = 0;
 	Point m_PositionBackup;
+	size_t m_CurrentRotateBackup = 0;
 public:
 	Figure(Point position);
 	void update(double dt);
@@ -31,8 +33,8 @@ public:
 	void move_left();
 	void boost();
 	const vector<Point>& get_body() const {
-		return m_Body;
-	};
+		return m_Body[m_CurrentRotate];
+	}
 	Point get_position() const {
 		return m_Position;
 	};
@@ -41,6 +43,6 @@ public:
 	}
 	void backup();
 	void restore();
-
+	void rotate();
 };
 

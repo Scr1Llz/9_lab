@@ -13,7 +13,7 @@ void Figure::update(double dt) {
 }
 
 void Figure::render(PaintDevice& paintDevice) {
-	for (const Point& point : m_Body)
+	for (const Point& point : m_Body[m_CurrentRotate])
 	{
 		Vector2 v(point.x + m_Position.x,
 			point.y + m_Position.y);
@@ -35,8 +35,17 @@ void Figure::boost() {
 
 void Figure::backup() {
 	m_PositionBackup = m_Position;
+	m_CurrentRotateBackup = m_CurrentRotate;
 }
 
 void Figure::restore() {
 	m_Position = m_PositionBackup;
+	m_CurrentRotate = m_CurrentRotateBackup;
+}
+
+void Figure::rotate() {
+	if (m_CurrentRotate + 1 < 4) {
+		m_CurrentRotate++;
+	}
+	else m_CurrentRotate = 0;
 }

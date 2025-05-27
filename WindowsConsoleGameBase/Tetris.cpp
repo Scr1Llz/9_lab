@@ -13,6 +13,9 @@ void Tetris::on_button_press(const int button) {
 	case VK_DOWN:
 		m_Figure->boost();
 		break;
+	case VK_SPACE:
+		m_Figure->rotate();
+		break;
 	}
 	if (m_GameField.has_collision(*m_Figure)) m_Figure->restore();
 }
@@ -40,4 +43,5 @@ Tetris::Tetris() {
 	track_key(VK_LEFT);
 	track_key(VK_RIGHT);
 	track_key(VK_DOWN);
+	track_key(VK_SPACE);
 }
