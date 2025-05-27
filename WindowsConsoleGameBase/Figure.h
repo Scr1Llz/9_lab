@@ -26,5 +26,8 @@ public:
 	Figure(Point position);
 	void update(double dt);
 	void render(PaintDevice& paintDevice);
+	void move_right();
+	void move_left();
+
 };
 

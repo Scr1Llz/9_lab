@@ -20,3 +20,11 @@ void Figure::render(PaintDevice& paintDevice) {
 		paintDevice.set_char(v, 0x25D8);
 	}
 }
+
+void Figure::move_right() {
+	m_Position.x++;
+}
+
+void Figure::move_left() {
+	m_Position.x--;
+}
