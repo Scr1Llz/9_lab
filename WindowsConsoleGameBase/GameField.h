@@ -1,5 +1,6 @@
 #pragma once
 #include "PaintDevice.h"
+#include "Figure.h"
 #include <vector>
 
 using namespace std;
@@ -12,6 +13,6 @@ private:
 public:
 	void resize(size_t width, size_t height);
 	void render(PaintDevice& paintDevice);
-
+	bool has_collision(const Figure& figure);
 };
 

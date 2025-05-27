@@ -28,6 +28,15 @@ public:
 	void render(PaintDevice& paintDevice);
 	void move_right();
 	void move_left();
+	const vector<Point>& get_body() const {
+		return m_Body;
+	};
+	Point get_position() const {
+		return m_Position;
+	};
+	void set_position(Point position) {
+		m_Position = position;
+	}
 
 };
 
