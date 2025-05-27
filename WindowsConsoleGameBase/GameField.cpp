@@ -55,16 +55,32 @@ bool GameField::has_collision(const Figure& figure) {
 }
 
 void GameField::merge(const Figure& figure) {
-	const auto& blocks = figure.get_body();  // Получаем блоки фигуры
-	const Point& pos = figure.get_position();  // Получаем позицию фигуры
+	const auto& blocks = figure.get_body();
+	const Point& pos = figure.get_position();
 
 	for (const auto& block : blocks) {
 		size_t x = pos.x + block.x;
 		size_t y = pos.y + block.y;
 
-		// Проверяем, что координаты в пределах поля
 		if (x < m_Width && y < m_Height) {
-			m_Field[y-1][x-1] = 0x25D8;  // Записываем символ фигуры в поле
+			m_Field[y-1][x-1] = 0x25D8;
+		}
+	}
+
+	for (size_t i = 0; i < m_Field.size(); i++)
+	{
+		bool isfool = true;
+		for (size_t j = 0; j < m_Field[i].size(); j++)
+		{
+			isfool = isfool && m_Field[i][j] != 0x0387;
+		}
+		if (isfool)
+		{
+			for (size_t j = i; j > 0; j--)
+			{
+				m_Field[j] = m_Field[j - 1];
+			}
+			m_Field[0] = vector<wchar_t>(m_Width - 2, 0x0387);
 		}
 	}
 }
